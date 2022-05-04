@@ -1,35 +1,21 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private const int ValueOfMultiplication = 100;
+    private int _currentScore;
     
-    [SerializeField] private TextMeshProUGUI _scoreText;
-    [SerializeField] private Button _multiplieButton;
-    [SerializeField] private int _currentScore;
-    
-    private void Start() => _multiplieButton.interactable = true;
+    public static event Action OnNewRecordAchiew;
 
     private void ScoreChanger(int score)
     {
-        _currentScore += score;
-        ScoreUpdater();
-    }
-    
-    public void MultiplierClick()
-    {
-        if (_currentScore >= 100)
+        if (_currentScore < score)
         {
-            _currentScore -= ValueOfMultiplication;
-            ScoreUpdater();
+            _currentScore = score;
+            OnNewRecordAchiew?.Invoke();
         }
-    }
-
-    private void ScoreUpdater()
-    {
-        _scoreText.text = _currentScore.ToString();
     }
 
     private void OnEnable() => TileCubeSystem.OnScoreChange += ScoreChanger;

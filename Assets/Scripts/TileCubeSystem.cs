@@ -2,19 +2,17 @@ using System;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
+[RequireComponent(typeof(LineRenderer))]
 public class TileCubeSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] tmpText;
     [SerializeField] private GameObject connectEff;
         
     private int _value;
-    private int _score;
-    
-    public static Action<int> OnScoreChange;
+    public static event Action<int> OnScoreChange;
 
     private MeshRenderer _renderer;
-    private readonly int[] _valuesRange = {2 ,4 ,8 };
+    private readonly int[] _valuesRange = {2, 4, 8, 16, 32};
     private void Awake()
     {
         _renderer = GetComponent<MeshRenderer>();
@@ -55,11 +53,12 @@ public class TileCubeSystem : MonoBehaviour
         if (values != GetComponent<TileCubeSystem>()._value) 
              return;
         
-        MultiplyCollidedObjects(values, other.transform);
-        Thrower(other.gameObject);
-        Destroy(gameObject);
-        Instantiate(connectEff, other.transform.position, Quaternion.identity);
-        OnScoreChange?.Invoke(MultiplyCollidedObjects(values,other.transform));
+        MultiplyCollidedObjects(values, transform);
+        Thrower(gameObject);
+        Destroy(other.gameObject);
+        Instantiate(connectEff, transform.position, Quaternion.identity);
+        
+        OnScoreChange?.Invoke(MultiplyCollidedObjects(values,transform));
     }
     private int MultiplyCollidedObjects(int value, Component changedObject)
     {
