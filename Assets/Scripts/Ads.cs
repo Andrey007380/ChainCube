@@ -1,4 +1,3 @@
-using System;
 using GoogleMobileAds.Api;
 using UnityEngine;
 
@@ -24,7 +23,7 @@ public class Ads : MonoBehaviour
             string adUnitId = "unexpected_platform";
 #endif
         // Create a 320x50 banner at the top of the screen.
-                    _bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
+        _bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
     }
     
     private void RequestInterstitial()
@@ -37,26 +36,35 @@ public class Ads : MonoBehaviour
 #else
         string adUnitId = "unexpected_platform";
 #endif
-        _reloadCounter++;
-        if (_reloadCounter % 10 == 0)
-        {
+        
+            Debug.Log("work");
             // Initialize an InterstitialAd.
             _interstitial = new InterstitialAd(adUnitId);
 
             AdRequest request = new AdRequest.Builder().Build();
             _interstitial.LoadAd(request);
+        
+    }
+    
+    private void RequestInterstitial(Vector3 obj)
+    {
+        _reloadCounter++;
+        if (_reloadCounter % 10 == 0)
+        {
+            Debug.Log("10");
+            RequestInterstitial();
         }
     }
 
     private void OnEnable()
     {
         TileCubeMover.OnShoot += RequestInterstitial;
-        Score.OnNewRecordAchiew += RequestInterstitial;
+        Score.OnNewRecordAchieve += RequestInterstitial;
     }
-
+    
     private void OnDisable()
     {
         TileCubeMover.OnShoot -= RequestInterstitial;
-        Score.OnNewRecordAchiew -= RequestInterstitial;
+        Score.OnNewRecordAchieve -= RequestInterstitial;
     }
 }

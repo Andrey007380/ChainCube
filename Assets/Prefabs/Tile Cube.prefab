@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 73641100009530580}
   - component: {fileID: 1325310303003732245}
   - component: {fileID: 6145430666514135903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,9 +133,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 1
 --- !u!114 &1325310303003732245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295681755154707907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -212,7 +212,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.49803922}
       key1: {r: 1, g: 1, b: 1, a: 0.49803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -241,7 +241,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
@@ -5250,6 +5250,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4168042244437425581}
     m_Modifications:
     - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
+      propertyPath: m_fontSize
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_margin.w
       value: -0.093352854
       objectReference: {fileID: 0}
@@ -5367,6 +5371,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4168042244437425581}
     m_Modifications:
+    - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
+      propertyPath: m_fontSize
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_margin.w
       value: -0.1269278
@@ -5486,6 +5494,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4168042244437425581}
     m_Modifications:
     - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
+      propertyPath: m_fontSize
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_margin.w
       value: -0.089136004
       objectReference: {fileID: 0}
@@ -5604,6 +5616,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4168042244437425581}
     m_Modifications:
     - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
+      propertyPath: m_fontSize
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_margin.w
       value: -0.048404694
       objectReference: {fileID: 0}
@@ -5665,7 +5681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05099986
+      value: -0.051
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5673,11 +5689,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5693,7 +5709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5189314360194679006, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -5721,6 +5737,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4168042244437425581}
     m_Modifications:
+    - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
+      propertyPath: m_fontSize
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_margin.w
       value: -0.1066798
@@ -5839,6 +5859,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4168042244437425581}
     m_Modifications:
+    - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
+      propertyPath: m_fontSize
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2478635205971655297, guid: 280fff2bd6eb1c346b63e34c9981fc75, type: 3}
       propertyPath: m_margin.w
       value: -0.24928433

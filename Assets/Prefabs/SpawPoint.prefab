@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6781116972585093922}
   - component: {fileID: 6781116972585093923}
   - component: {fileID: 4507406054589566332}
+  - component: {fileID: 2396953644987452200}
   m_Layer: 0
   m_Name: SpawPoint
   m_TagString: Untagged
@@ -59,3 +60,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2396953644987452200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781116972585093921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a48a02fee9fd94e914d56bcbcb4fd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: 1
+    prefab: {fileID: 295681755154707907, guid: 9e9bec1c4d0e96c46b656802fe53dcc9, type: 3}
+    size: 50
