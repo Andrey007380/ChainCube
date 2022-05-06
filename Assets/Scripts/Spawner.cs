@@ -21,15 +21,15 @@ public class Spawner : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+       
+        colliders = Physics.OverlapBox(transform.position, new Vector3(3,1f,4), Quaternion.identity, LayerMask.GetMask($"Cube"));
+        if (colliders.Length > 1) OnLose?.Invoke();
         InstantiateTile();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Vector3 offset = new Vector3(0, 0, 1);
-        colliders = Physics.OverlapBox(transform.position, new Vector3(4,0.5f,3), Quaternion.identity, LayerMask.GetMask($"Cube"));
-        
-        if (colliders.Length > 1) OnLose?.Invoke();
+       
 
     }
 
