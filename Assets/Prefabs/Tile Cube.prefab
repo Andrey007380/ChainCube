@@ -120,6 +120,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connectEff: {fileID: 7637705283897584967, guid: b6cb1d8f752db49e38004d9c58dd6281, type: 3}
+  colors:
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 1, g: 0.645283, b: 0.65908974, a: 0}
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0.77867997, b: 0.47547168, a: 0}
+  - {r: 1, g: 0.5957075, b: 0, a: 0}
+  - {r: 1, g: 0.95166147, b: 0.51320755, a: 0}
+  - {r: 1, g: 0.94729996, b: 0, a: 0}
+  - {r: 0.5409511, g: 1, b: 0.53207546, a: 0}
+  - {r: 0.0010937452, g: 1, b: 0, a: 0}
+  - {r: 0.65471697, g: 1, b: 0.98259073, a: 0}
+  - {r: 0, g: 1, b: 0.9758091, a: 0}
+  - {r: 0.4377358, g: 0.5687018, b: 1, a: 0}
+  - {r: 0, g: 0.15907454, b: 1, a: 0}
+  - {r: 0.91484684, g: 0.48490566, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0.92555904, a: 0}
 --- !u!54 &73641100009530580
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,7 +171,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295681755154707907}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -212,7 +228,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.49803922}
+      key0: {r: 1, g: 0, b: 0, a: 0.49803922}
       key1: {r: 1, g: 1, b: 1, a: 0.49803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -245,7 +261,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!1 &4407633073104943556
 GameObject:

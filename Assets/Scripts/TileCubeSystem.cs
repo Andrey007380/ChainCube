@@ -10,11 +10,13 @@ public class TileCubeSystem : MonoBehaviour
         
     private int _value;
     
-    public static event Action<int> OnScoreChange;
-    public static event Action<GameObject> OnCollide;
+    [SerializeField] private Color[] colors;
+    
+    public static Action<int> OnScoreChange;
+    public static Action<GameObject> OnCollision;
 
     private MeshRenderer _renderer;
-    
+
     private readonly int[] _valuesRange = {2, 4, 8, 16};
     
     private void Awake()
@@ -26,7 +28,6 @@ public class TileCubeSystem : MonoBehaviour
     private void OnEnable()
     { 
        int rand = Random.Range(0, _valuesRange.Length);
-       
        ChangeValue(_valuesRange[rand]);
        ChangeColor();
     }
@@ -48,8 +49,9 @@ public class TileCubeSystem : MonoBehaviour
         var colorMultiplier = 6;
         var result = firstPartOfColor + secondPartOfColor;
         float colorValue = float.Parse(result);
-        
+
         _renderer.material.color = new Color(colorValue * colorMultiplier , colorValue, colorValue);
+
     }
     
     private void OnCollisionEnter(Collision other)
@@ -61,19 +63,20 @@ public class TileCubeSystem : MonoBehaviour
         if (values != GetComponent<TileCubeSystem>()._value) 
              return;
         
-        OnCollide?.Invoke(other.gameObject);
+        OnCollision?.Invoke(gameObject);
         
-        MultiplyCollidedObjects(values, other.transform);
-        Pool.Instance.AddToPool(1, gameObject);
+        MultiplyCollidedObjects(values, transform);
+        Pool.Instance.AddToPool(1, other.gameObject);
 
         Instantiate(connectEff, transform.position, Quaternion.identity);
-        OnScoreChange?.Invoke(MultiplyCollidedObjects(values,other.transform));
+        OnScoreChange?.Invoke(MultiplyCollidedObjects(values, transform));
     }
     
     private int MultiplyCollidedObjects(int value, Component changedObject)
     {
         value *= 2;
         changedObject.GetComponent<TileCubeSystem>().ChangeValue(value);
-            return value;
+        return value;
     }
+    
 }

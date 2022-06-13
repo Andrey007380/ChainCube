@@ -18,13 +18,13 @@ public class Ads : MonoBehaviour
 
     private void RequestInterstitial(Vector3 obj)
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
+        #if UNITY_ANDROID
+                string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        #elif UNITY_IPHONE
+                string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+        #else
+                string adUnitId = "unexpected_platform";
+        #endif
         
         // Initialize an InterstitialAd.
         _interstitial = new InterstitialAd(adUnitId);
@@ -56,13 +56,13 @@ public class Ads : MonoBehaviour
     
     private void RequestBanner()
     {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173711";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
-#else
-            string adUnitId = "unexpected_platform";
-#endif
+        #if UNITY_ANDROID
+                string adUnitId = "ca-app-pub-3940256099942544/1033173711";
+        #elif UNITY_IPHONE
+                    string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+        #else
+                    string adUnitId = "unexpected_platform";
+        #endif
         // Create a 320x50 banner at the top of the screen.
         _bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
         
@@ -80,12 +80,12 @@ public class Ads : MonoBehaviour
 
         // Load the banner with the request.
         _bannerView.LoadAd(request);
-        _bannerView.Show();
     }
     
     
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
+        // Load the banner with the request.
         MonoBehaviour.print("HandleAdLoaded event received");
     }
 
@@ -103,6 +103,8 @@ public class Ads : MonoBehaviour
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdClosed event received");
+        _bannerView.Destroy();
+        _interstitial.Destroy();
     }
 
     public void HandleOnAdLeavingApplication(object sender, EventArgs args)
@@ -112,11 +114,13 @@ public class Ads : MonoBehaviour
 
     private void OnEnable()
     {
+        Spawner.OnLose += RequestBanner;
         TileCubeMover.OnShoot += RequestInterstitial;
     }
-    
+
     private void OnDisable()
     {
+        Spawner.OnLose += RequestBanner;
         TileCubeMover.OnShoot -= RequestInterstitial;
     }
 }

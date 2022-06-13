@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    private Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
-    private Queue<GameObject> availableObjcts = new Queue<GameObject>();
+    private Dictionary<int, Queue<GameObject>> poolDictionary = new();
+    private Queue<GameObject> availableObjcts = new();
 
     [System.Serializable]
     private class Pools
@@ -18,10 +18,8 @@ public class Pool : MonoBehaviour
 
     public static Pool Instance { get; private set; }
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private void Awake() => Instance = this;
+
     public void Start()
     {
         foreach (Pools pool in pools)
@@ -43,6 +41,10 @@ public class Pool : MonoBehaviour
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
         objectToSpawn.SetActive(true);
+        if (!objectToSpawn.GetComponent<TileCubeMover>())
+        {
+            objectToSpawn.AddComponent<TileCubeMover>();
+        }
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 
@@ -55,6 +57,7 @@ public class Pool : MonoBehaviour
             return;
 
         prefab.SetActive(false);
+        prefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
         availableObjcts.Enqueue(prefab);
 
     }
