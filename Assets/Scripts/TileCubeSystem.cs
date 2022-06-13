@@ -7,17 +7,14 @@ public class TileCubeSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] tmpText;
     [SerializeField] private GameObject connectEff;
-        
-    private int _value;
-    
     [SerializeField] private Color[] colors;
     
+    private int _value = 0;
+    private MeshRenderer _renderer;
+    private readonly int[] _valuesRange = {2, 4, 8};
+
     public static Action<int> OnScoreChange;
     public static Action<GameObject> OnCollision;
-
-    private MeshRenderer _renderer;
-
-    private readonly int[] _valuesRange = {2, 4, 8, 16};
     
     private void Awake()
     {
@@ -44,14 +41,12 @@ public class TileCubeSystem : MonoBehaviour
     
     private void ChangeColor()
     {
-        String firstPartOfColor = "0.";
-        String secondPartOfColor = _value.ToString();
-        var colorMultiplier = 6;
-        var result = firstPartOfColor + secondPartOfColor;
-        float colorValue = float.Parse(result);
-
-        _renderer.material.color = new Color(colorValue * colorMultiplier , colorValue, colorValue);
-
+        int result;
+        for (int i = 0; Math.Pow(2, i) != _value ; i++)
+        {
+            result = i;
+            _renderer.material.color = colors[result];
+        }
     }
     
     private void OnCollisionEnter(Collision other)
@@ -65,17 +60,17 @@ public class TileCubeSystem : MonoBehaviour
         
         OnCollision?.Invoke(gameObject);
         
-        MultiplyCollidedObjects(values, transform);
+        MultiplyCollidedObjects(values);
         Pool.Instance.AddToPool(1, other.gameObject);
 
         Instantiate(connectEff, transform.position, Quaternion.identity);
-        OnScoreChange?.Invoke(MultiplyCollidedObjects(values, transform));
+        OnScoreChange?.Invoke(MultiplyCollidedObjects(values));
     }
     
-    private int MultiplyCollidedObjects(int value, Component changedObject)
+    private int MultiplyCollidedObjects(int value)
     {
         value *= 2;
-        changedObject.GetComponent<TileCubeSystem>().ChangeValue(value);
+        ChangeValue(value);
         return value;
     }
     

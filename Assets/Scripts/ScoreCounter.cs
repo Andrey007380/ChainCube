@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
 {
-    [SerializeField] private int _currentGameScore;
-    [SerializeField] private int _currentCubeMaxScore;
-    
-    public static Action OnNewRecordAchieve;
+    private int _currentGameScore = 0;
+    private int _currentCubeMaxScore = 0;
     
     public static Action<int> RecordAchieveValue;
     
@@ -17,7 +15,6 @@ public class ScoreCounter : MonoBehaviour
         if (_currentCubeMaxScore >= score) 
             return;
         _currentCubeMaxScore = score;
-        OnNewRecordAchieve?.Invoke();
     }
 
     private void OnEnable() => TileCubeSystem.OnScoreChange += ScoreChanger;

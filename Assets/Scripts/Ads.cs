@@ -45,7 +45,7 @@ public class Ads : MonoBehaviour
     {
         MonoBehaviour.print("HandleAdLoaded event received");
         _reloadCounter++;
-        if (_reloadCounter % 10 == 0)
+        if (_reloadCounter % 20 == 0)
         {
             if (_interstitial.IsLoaded())
             {

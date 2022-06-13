@@ -22,7 +22,6 @@ public class TileCubeMover : MonoBehaviour, IMovable
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.SetVertexCount(2);
         _rigidbody = GetComponent<Rigidbody>();
         _camera = Camera.main;
     }
